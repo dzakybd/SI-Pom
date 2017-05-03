@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('bbm.data');
+});
+
+Route::get('/databbm', function () {
+    return view('bbm.data');
+});
+
+Route::get('/transaksibbm', function () {
+    return view('bbm.transaksi');
+});
+
+Route::get('/inputbbm', function () {
+    return view('bbm.input');
+});
+
+Route::get('/rekapbbm', function () {
+    return view('bbm.rekap');
 });
