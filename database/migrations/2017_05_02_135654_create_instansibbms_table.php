@@ -17,37 +17,38 @@ class CreateInstansibbmsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('namaInstansi',100);
-            $table->string('bbm')->unsigned()
-                  ->index();
-            $table->integer('keterangan',false, true)->unsigned()
-                  ->index();
-            $table->integer('transaksi',false, true)->unsigned()
-                  ->index();
+            $table->integer('bbm',false,true)->unsigned();
+            $table->integer('keterangan',false,true)->unsigned();
+            $table->integer('transaksi',false,true)->unsigned();
+            // $table->foreign('bbm')
+            //       ->references('id')
+            //       ->on('bbms')
+            //       ->onUpdate('cascade')
+            //       ->onDelete('cascade');
+            // $table->foreign('keterangan')
+            //       ->references('id')
+            //       ->on('keteranganbbms')
+            //       ->onUpdate('cascade')
+            //       ->onDelete('cascade');
+            // $table->foreign('transaksi')
+            //       ->references('id')
+            //       ->on('transaksibbms')
+            //       ->onUpdate('cascade')
+            //       ->onDelete('cascade');
+
         });
-        Schema::table('instansibbms',function($table){
-           // $table->string('bbm')->unsigned();
-            $table->foreign('bbm')
-                  ->references('id')
-                  ->on('bbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-        });
-        Schema::table('instansibbms',function($table){
-            //$table->integer('keterangan')->unsigned();
-            $table->foreign('keterangan')
-                  ->references('id')
-                  ->on('keteranganbbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-        });
-        Schema::table('instansibbms',function($table){
-            //$table->integer('transaksi')->unsigned();
-            $table->foreign('transaksi')
-                  ->references('id')
-                  ->on('transaksibbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-        });    
+        // Schema::table('instansibbms', function (Blueprint $table) {
+        //     // $table->string('bbm')->unsigned();
+            
+        // });
+        // Schema::table('instansibbms', function (Blueprint $table) {
+        //     // $table->integer('keterangan')->unsigned();
+            
+        // });
+        // Schema::table('instansibbms', function (Blueprint $table) {
+        //     // $table->integer('transaksi')->unsigned();
+            
+        // });    
     }
 
     /**

@@ -16,28 +16,29 @@ class CreateKeteranganbbmsTable extends Migration
         Schema::create('keteranganbbms', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            //$table->int('iegernstansi')->unsigned()
-            //      ->index();
             $table->string('ket',100);
-            //$table->integer('trans')->unsigned()
-            //      ->index();
+            $table->integer('instansi',false,true)->unsigned();
+            $table->integer('trans',false,true)->unsigned();
+            
+            // $table->foreign('instansi')
+            //       ->references('id')
+            //       ->on('instansibbms')
+            //       ->onUpdate('cascade')
+            //       ->onDelete('cascade');
+            // $table->foreign('trans')
+            //       ->references('id')
+            //       ->on('transaksibbms')
+            //       ->onUpdate('cascade')
+            //       ->onDelete('cascade');
         });
-        Schema::table('keteranganbbms',function($table){
-            $table->integer('instansi')->unsigned();
-            $table->foreign('instansi')
-                  ->references('id')
-                  ->on('instansibbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-        });
-        Schema::table('keteranganbbms',function($table){
-            $table->integer('trans')->unsigned();
-            $table->foreign('trans')
-                  ->references('id')
-                  ->on('transaksibbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-        });
+        // Schema::table('keteranganbbms',function (Blueprint $table) {
+        //     // $table->integer('instansi')->unsigned();
+            
+        // });
+        // Schema::table('keteranganbbms',function (Blueprint $table) {
+        //     // $table->integer('trans')->unsigned();
+            
+        // });
     }
 
     /**
