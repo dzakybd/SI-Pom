@@ -45,7 +45,7 @@
       <!-- BEGIN SIDEBAR -->
       <div class="sidebar">
         <div class="logopanel">
-          <h1><a href="dashboard.html">&nbsp;</a></h1>
+          <h1><a href="/dashboard">&nbsp;</a></h1>
         </div>
         <div class="sidebar-inner">
           <div class="sidebar-top">
