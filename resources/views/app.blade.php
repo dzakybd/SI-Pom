@@ -88,8 +88,8 @@
               <a href=""><i class="fa fa-car"></i><span>BBM</span> <span class="fa arrow active"></span></a>
               <ul class="children collapse">
                 <li class=""><a href="/databbm">Data BBM</a></li>
-                <li class=""><a href="/transaksibbm/create">Data Transaksi BBM</a></li>
-                <li class=""><a href="/inputbbm">Input BBM</a></li>
+                <li class=""><a href="/transaksibbm">Data Transaksi BBM</a></li>
+                <li class=""><a href="/input">Input BBM</a></li>
                 <li class=""><a href="/rekapbbm">Rekap BBM</a></li>
               </ul>
             </li>

@@ -13,32 +13,10 @@ class ForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('instansibbms', function (Blueprint $table) {
-            $table->foreign('bbm')
-                  ->references('id')
-                  ->on('bbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-            $table->foreign('keterangan')
-                  ->references('id')
-                  ->on('keteranganbbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-            $table->foreign('transaksi')
-                  ->references('id')
-                  ->on('transaksibbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-        });
         Schema::table('keteranganbbms', function (Blueprint $table) {
             $table->foreign('instansi')
                   ->references('id')
                   ->on('instansibbms')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-            $table->foreign('trans')
-                  ->references('id')
-                  ->on('transaksibbms')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
         });

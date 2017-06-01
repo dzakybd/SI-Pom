@@ -17,9 +17,6 @@ class CreateInstansibbmsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('namaInstansi',100);
-            $table->integer('bbm',false,true)->unsigned();
-            $table->integer('keterangan',false,true)->unsigned();
-            $table->integer('transaksi',false,true)->unsigned();
             // $table->foreign('bbm')
             //       ->references('id')
             //       ->on('bbms')

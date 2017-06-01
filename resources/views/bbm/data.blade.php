@@ -137,7 +137,7 @@ div.ketceh{
                 <div class="well">
                     <h2>{{$i}} <b>{{$m->namaBBM}}</b></h2>
                     <p>Harga : Rp {{$m->harga}},-</p>
-                    <button id="myBtnEdit" value="<?php echo $m->idbbms;?>" class="myBtnSEdit btn btn-primary">Edit</button>
+                    <button id="myBtnEdit" class="myBtnSEdit btn btn-primary">Edit</button>
                     <a href="/hapusdatabbm/{{$m->idbbms}}"><button type='submit' class="btn btn-default">Hapus</button></a>
                 </div>
             </div>

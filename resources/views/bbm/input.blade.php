@@ -53,20 +53,24 @@
 
 	<div class="form-group">
 		<div class="row">
-			<form action="/action_page.php">
 				<div class="col-xs-11">
 					<div class="form-group">
 						<label for="instansi"> Cari Instansi</label>
-						<select id="instansiPick" class="form-control" style="width: 100%;" name="instansi">
-						</select>
+						<select id="instansiPick" class="form-control" style="width: 100%;" name="instansi" onchange="link()">
+						 	<option value=""></option>
+							 @if($insta->count())
+					          @foreach($insta as $m)
+							  <option value="{{$m->idinstansi}}">{{$m->namaInstansi}}</option>
+							  @endforeach
+							 @endif
+							</select>
 					</div>
 				</div>
 				<div class="col-xs-1" style="top: 1.8em;">
 					<div class="form-group">
-						<button class="btn btn-primary">Cari</button>
+						<a href="" id="editlink"><button class="btn btn-primary">Cari</button></a>
 					</div>
 				</div>
-			</form>
 		</div>
 	</div>
 
@@ -95,4 +99,12 @@
 	<div class="add-table text-center hidden">
 		<h2><a href="#" class="plus-button" onclick="tambahInput()"><i class="fa fa-plus"></i></a></h2>
 	</div>
+
+	<script>
+		function link() {	
+		 var selectedInstansi = document.getElementById('instansiPick');
+		 var selected = selectedInstansi.options[selectedInstansi.selectedIndex].value;
+		 document.getElementById("editlink").href = "/input/"+selected;
+		}
+	</script>
 @endsection

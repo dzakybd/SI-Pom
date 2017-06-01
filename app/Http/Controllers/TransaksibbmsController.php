@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\transaksibbms;
 use DB;
 use App\instansibbms;
+use App\keteranganbbms;
 use Illuminate\Http\Request;
 
 class TransaksibbmsController extends Controller
@@ -16,7 +17,9 @@ class TransaksibbmsController extends Controller
      */
     public function index()
     {
-        return view ('bbm.transaksiedit');
+        $insta = instansibbms::all();
+        return view ('bbm.transaksi',compact('insta'));
+        //return view ('bbm.transaksiedit');
     }
 
     /**
@@ -26,8 +29,6 @@ class TransaksibbmsController extends Controller
      */
     public function create()
     {
-        $insta = instansibbms::pluck('idinstansi','namaInstansi');
-        return view ('bbm.transaksi',compact('insta'));
     }
 
     /**
@@ -38,7 +39,6 @@ class TransaksibbmsController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -47,9 +47,12 @@ class TransaksibbmsController extends Controller
      * @param  \App\transaksibbms  $transaksibbms
      * @return \Illuminate\Http\Response
      */
-    public function show(transaksibbms $transaksibbms)
+    public function show($transaksibbms)
     {
-        //
+        $insta = instansibbms::all();
+        $ketinsta = keteranganbbms::all()->where('instansi', '=' , $transaksibbms);
+        $namainsta = instansibbms::where('idinstansi', '=', $transaksibbms)->first();
+        return view ('bbm.transaksishow',compact('insta', 'namainsta', 'ketinsta'));
     }
 
     /**
@@ -60,7 +63,6 @@ class TransaksibbmsController extends Controller
      */
     public function edit(transaksibbms $transaksibbms)
     {
-        //
     }
 
     /**

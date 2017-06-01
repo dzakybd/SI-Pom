@@ -53,20 +53,24 @@
 
 	<div class="form-group">
 		<div class="row">
-			<form action="/action_page.php">
-				<div class="col-xs-11">
-					<div class="form-group">
+			<div class="col-xs-11">
+				<div class="form-group">
 						<label for="instansi"> Cari Instansi</label>
-						<select id="instansiPick" class="form-control" style="width: 100%;" name="instansi">
-						</select>
+						<select id="instansiPick" class="form-control" style="width: 100%;" name="instansi" onchange="link()">
+						 	<option value=""></option>
+							 @if($insta->count())
+					          @foreach($insta as $m)
+							  <option value="{{$m->idinstansi}}">{{$m->namaInstansi}}</option>
+							  @endforeach
+							 @endif
+							</select>
 					</div>
-				</div>
-				<div class="col-xs-1" style="top: 1.8em;">
+			</div>
+			<div class="col-xs-1" style="top: 1.8em;">
 					<div class="form-group">
-						<button class="btn btn-primary">Cari</button>
+						<a href="" id="editlink"><button class="btn btn-primary">Cari</button></a>
 					</div>
 				</div>
-			</form>
 		</div>
 	</div>
 
@@ -82,26 +86,25 @@
 			</tr>
 		</thead>
 		<tbody class="input-body">
-	      <tr>
-				<td><input class="form-control datepick" type="text" name="datepick"></td>
+ 		  <tr>
+
+		  </tr>
+		        {!! Form::open(array('url' => '/input')) !!}
+		        <tr>
+		        <td>
+					{!! Form::text('tanggal',null, array('class' => 'form-control datepick','placeholder'=>'Tanggal')) !!}	
+		        </td>
+		        <td>
+					{!! Form::select('keterangant', $ketinput ,null , array('class' => 'form-control whichKeterangan')) !!}	
+		        </td>
+		        <td>
+					{!! Form::select('bbmt', $bbminput ,null , array('class' => 'form-control bbmPick')) !!}	
+		        </td>
 				<td>
-				<select class="form-control whichKeterangan" id="whichKeterangan">
-						<option value="">Brimob</option>
-						<option value="">Satpol PP</option>
-				</select>
+					{!! Form::select('tipe', ['Keluar', 'Masuk'],null ,array('class' => 'form-control choice')) !!}
 				</td>
 				<td>
-					<select class="form-control bbmPick" id="bbmPick">
-							<option value="">Pertalite</option>
-					</select>
-				</td>
-				<td>
-					<select class="form-control choice" id="choice">
-						<option value="keluar">Keluar</option>
-						<option value="masuk">Masuk</option>
-					</select>
-				</td>
-				<td>
+					{!! Form::text('jumlah',null, array('class' => 'form-control jumlah','placeholder'=>'Jumlah')) !!}
 					<input type="text" name="jumlah" id="jumlah" class="form-control jumlah"> 
 				</td>
 				<td class="text-center">
@@ -110,7 +113,6 @@
 			</tr>
 		</tbody>
 	</table>
-	<input type="hidden" name="crumb" id="" value="">
 
 	<a href="#" class="btn btn-primary text-center save-btn" style="width: 100%; margin-bottom: 10px;" onclick="">Save Transaksi BBM</a>
 @endsection

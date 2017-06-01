@@ -155,20 +155,24 @@
 	</div>
 	<input type="hidden" name="crumb" id="" value="" />
 	<div class="row">
-		<form action="/action_page.php">
 		<div class="col-xs-8">
 			<div class="form-group">
 				<label for="instansi"> Cari Instansi</label>
-				<select id="instansiPick" class="form-control" style="width: 100%;" name="instansi">
+			 	<select id="instansiPick" class="form-control" style="width: 100%;" name="instansi" onchange="link()">
+			 	<option value=""></option>
+				 @if($insta->count())
+		          @foreach($insta as $m)
+				  <option value="{{$m->idinstansi}}">{{$m->namaInstansi}}</option>
+				  @endforeach
+				 @endif
 				</select>
 			</div>
 		</div>
 		<div class="col-xs-1" style="top: 1.8em;">
 			<div class="form-group">
-				<button class="btn btn-primary">Cari</button>
+				 <a href="" id="editlink"><button class="btn btn-primary">Cari</button></a>
 			</div>
 		</div>
-		</form>
 		<div class="col-xs-3 text-right" style="top: 1.8em;">
 			<button id="myBtn" class="btn btn-default tambah-btn" style="width: 100%;">Tambah Instansi</button>
 		</div>
@@ -192,17 +196,24 @@
 		      <h2>TAMBAH Instansi :</h2>
 		    </div>
 		    <div class="modal-body">
-			  <form action="/action_page.php">
-			    <label for="fname">Nama Instansi</label>
-			    <input type="text" id="fname" name="firstname" placeholder="Isi Nama Instansi..">
-			  </form>
+			  	{!! Form::open(array('url' => '/instansi')) !!}
+			        {!! Form::label('namaInstansi', 'Nama Instansi') !!}
+			        {!! Form::text('namaInstansi',null, array('placeholder'=>'Nama Instansi')) !!}
 		    </div>
 		    <div class="modal-footer">
-				<input type="submit" value="Save">
+				    {!! Form::button(' Submit', array('type' => 'submit'))!!}
+			    {!! Form::close()!!}
 		    </div>
 	  </div>
 
 	</div>
+	<script>
+		function link() {	
+		 var selectedInstansi = document.getElementById('instansiPick');
+		 var selected = selectedInstansi.options[selectedInstansi.selectedIndex].value;
+		 document.getElementById("editlink").href = "/transaksibbm/"+selected;
+		}
+	</script>
 <script>
 	// Get the modal
 	var modal = document.getElementById('myModal');

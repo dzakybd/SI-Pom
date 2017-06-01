@@ -35,7 +35,8 @@ class KeteranganbbmsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        keteranganbbms::create($request->all());
+        return redirect('/transaksibbm/'.$request["instansi"]);
     }
 
     /**

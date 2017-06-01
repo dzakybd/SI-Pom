@@ -18,7 +18,6 @@ class CreateKeteranganbbmsTable extends Migration
             $table->timestamps();
             $table->string('ket',100);
             $table->integer('instansi',false,true)->unsigned();
-            $table->integer('trans',false,true)->unsigned();
             
             // $table->foreign('instansi')
             //       ->references('id')

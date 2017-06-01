@@ -19,16 +19,20 @@ Route::resource('databbm','BbmsController');
 
 Route::resource('transaksibbm','TransaksibbmsController');
 
+Route::resource('keterangan','KeteranganbbmsController');
+
+Route::resource('input','InstansibbmsController');
+
 Route::get('hapusdatabbm/{id}', 'BbmsController@hapusdatabbm');
 
 
-Route::get('/inputbbmedit', function () {
-    return view('bbm.inputedit');
-});
+// Route::get('/inputbbmedit', function () {
+//     return view('bbm.inputedit');
+// });
 
-Route::get('/rekapbbmedit', function () {
-    return view('bbm.rekapedit');
-});
+// Route::get('/rekapbbmedit', function () {
+//     return view('bbm.rekapedit');
+// });
 // Route::get('/databbm', function () {
 //     return view('bbm.data');
 // });

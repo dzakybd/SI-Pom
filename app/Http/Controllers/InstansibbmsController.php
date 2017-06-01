@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\instansibbms;
+use App\keteranganbbms;
+use App\bbms;
 use Illuminate\Http\Request;
 
 class InstansibbmsController extends Controller
@@ -14,7 +16,8 @@ class InstansibbmsController extends Controller
      */
     public function index()
     {
-        //
+        $insta = instansibbms::all();
+        return view ('bbm.input',compact('insta'));
     }
 
     /**
@@ -35,7 +38,10 @@ class InstansibbmsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $instansibbm = new instansibbms;
+        $instansibbm->namaInstansi = $request['namaInstansi'];
+        $instansibbm->save();
+        return redirect('/transaksibbm');
     }
 
     /**
@@ -44,9 +50,12 @@ class InstansibbmsController extends Controller
      * @param  \App\instansibbms  $instansibbms
      * @return \Illuminate\Http\Response
      */
-    public function show(instansibbms $instansibbms)
+    public function show($instansibbms)
     {
-        //
+        $insta = instansibbms::all();
+        $ketinput = keteranganbbms::all()->where('instansi', $instansibbms)->pluck('ket', 'idketerangan');
+        $bbminput = bbms::all()->pluck('namaBBM', 'idbbms');
+        return view ('bbm.inputshow',compact('insta', 'ketinput', 'bbminput'));
     }
 
     /**
