@@ -14,7 +14,8 @@ class BbmsController extends Controller
      */
     public function index()
     {
-        //
+        $bbms = bbms::all();
+        return view('bbm.data',compact('bbms'));
     }
 
     /**
@@ -27,6 +28,12 @@ class BbmsController extends Controller
         //
     }
 
+    public function hapusdatabbm($id)
+    {
+        $bbms = new bbms();
+        $bbms->destroy($id);
+        return redirect('/databbm');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +42,8 @@ class BbmsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        bbms::create($request->all());
+        return redirect('/databbm');
     }
 
     /**
@@ -67,7 +75,7 @@ class BbmsController extends Controller
      * @param  \App\bbms  $bbms
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, bbms $bbms)
+    public function update(Request $request, $bbms)
     {
         //
     }
