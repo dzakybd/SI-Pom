@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\transaksibbms;
+use DB;
+use App\instansibbms;
 use Illuminate\Http\Request;
 
 class TransaksibbmsController extends Controller
@@ -24,7 +26,8 @@ class TransaksibbmsController extends Controller
      */
     public function create()
     {
-        //
+        $insta = instansibbms::pluck('idinstansi','namaInstansi');
+        return view ('bbm.transaksi',compact('insta'));
     }
 
     /**
