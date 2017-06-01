@@ -16,7 +16,7 @@ class TransaksibbmsController extends Controller
      */
     public function index()
     {
-        //
+        return view ('bbm.transaksiedit');
     }
 
     /**

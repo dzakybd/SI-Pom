@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('databbm','BbmsController');
+
+Route::resource('transaksibbm','TransaksibbmsController');
+
 Route::get('hapusdatabbm/{id}', 'BbmsController@hapusdatabbm');
 
 

@@ -187,7 +187,7 @@
 
 		<div class="col-xs-3">
 			<input type="hidden" id="jumlahhidden" value="Rp. 0,-">
-			<button id="myBtnKet" class="btn btn-primary" style="width: 100%;margin-bottom: 1em;">Tambah Keterangan</button>
+			<button id="myBtnEdit" class="myBtnSEdit btn-primary" style="width: 100%;margin-bottom: 1em;">Tambah Keterangan</button>
 			<div class="search-keterangan">
 
 				<div class="well well-pick activewell" style="padding: 0.6em !important; margin-bottom:5px !important;">
@@ -286,7 +286,7 @@
 
 	</div>
 
-	<div id="myModalKet" class="modal">
+	<div id="myModalEdit" class="modal">
 
   <!-- Modal content -->
 	  <div class="modal-content">
@@ -296,7 +296,7 @@
 		    </div>
 		    <div class="modal-body">
 			  <form action="/action_page.php">
-			    <label for="fname">Keterangan</label>
+			    <label for="fname">Nama Keterangan</label>
 			    <input type="text" id="fname" name="firstname" placeholder="Isi Keterangan..">
 			  </form>
 		    </div>
@@ -309,10 +309,13 @@
 <script>
 	// Get the modal
 	var modal = document.getElementById('myModal');
+	var modaledit = document.getElementById('myModalEdit');
 
 	// Get the button that opens the modal
 	var btn = document.getElementById("myBtn");
 	var $lba = document.getElementsByClassName("myBtnS");
+	var btnedit = document.getElementById("myBtnEdit");
+	var $lbaedit = document.getElementsByClassName("myBtnSEdit");
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 
@@ -320,50 +323,36 @@
 	btn.onclick = function() {
 	    modal.style.display = "block";
 	}
+	btnedit.onclick = function() {
+	    modaledit.style.display = "block";
+	}
 	// You nice function:
 	function myPopup() {
 	    modal.style.display = "block";
+	}
+	function myPopupEdit() {
+	    modaledit.style.display = "block";
 	}
 
 	// Assign a click event handler to every element:
 	for(var i=0; i<$lba.length; i++) {
 	    $lba[i].onclick = myPopup;
 	}
+	for(var i=0; i<$lbaedit.length; i++) {
+	    $lbaedit[i].onclick = myPopupEdit;
+	}
 
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
 	    modal.style.display = "none";
+	    modaledit.style.display = "none";
 	}
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
-	    if (event.target == modal) {
+	    if (event.target == modal || event.target == modaledit) {
 	        modal.style.display = "none";
-	    }
-	}
-
-	var modalket = document.getElementById('myModalKet');
-
-	// Get the button that opens the modal
-	var btnket = document.getElementById("myBtnKet");
-
-	// Get the <span> element that closes the modal
-	var spanket = document.getElementsByClassName("closeket")[0];
-
-	// When the user clicks the button, open the modal 
-	btn.onclickket = function() {
-	    modalket.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclickket = function() {
-	    modalket.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclickket = function(event) {
-	    if (event.target == modalket) {
-	        modalket.style.display = "none";
+	        modaledit.style.display = "none";
 	    }
 	}
 </script>
