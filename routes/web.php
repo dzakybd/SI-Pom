@@ -23,6 +23,8 @@ Route::resource('keterangan','KeteranganbbmsController');
 
 Route::resource('input','InstansibbmsController');
 
+Route::get('dataedit/{bbms}', 'BbmsController@edit');
+
 Route::get('hapusdatabbm/{id}', 'BbmsController@hapusdatabbm');
 
 Route::get('hapusdatatransaksi/{id}', 'TransaksibbmsController@hapusdatatransaksi');

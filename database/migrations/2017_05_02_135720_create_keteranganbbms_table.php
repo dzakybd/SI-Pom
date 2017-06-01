@@ -14,7 +14,7 @@ class CreateKeteranganbbmsTable extends Migration
     public function up()
     {
         Schema::create('keteranganbbms', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('idketerangan');
             $table->timestamps();
             $table->string('ket',100);
             $table->integer('instansi',false,true)->unsigned();

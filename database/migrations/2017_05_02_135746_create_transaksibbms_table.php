@@ -14,7 +14,7 @@ class CreateTransaksibbmsTable extends Migration
     public function up()
     {
         Schema::create('transaksibbms', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('idtransaksi');
             $table->timestamps();
             $table->string('tipe',10);
             $table->date('tanggal',100);

@@ -14,7 +14,7 @@ class CreateBbmsTable extends Migration
     public function up()
     {
         Schema::create('bbms', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('idbbms');
             $table->timestamps();
             $table->string('namaBBM',100);
             $table->integer('harga', false, true)->length(100);

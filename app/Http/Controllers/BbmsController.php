@@ -63,9 +63,10 @@ class BbmsController extends Controller
      * @param  \App\bbms  $bbms
      * @return \Illuminate\Http\Response
      */
-    public function edit(bbms $bbms)
+    public function edit($bbms)
     {
-        //
+        $bbmss = bbms::findorfail($bbms);
+        return view ('bbm.dataedit',compact('bbmss'));
     }
 
     /**
@@ -77,7 +78,9 @@ class BbmsController extends Controller
      */
     public function update(Request $request, $bbms)
     {
-        //
+        $bbmss = bbms::findorfail($bbms);
+        $bbmss->update($request->all());
+        return redirect('/databbm');
     }
 
     /**
@@ -88,6 +91,8 @@ class BbmsController extends Controller
      */
     public function destroy(bbms $bbms)
     {
-        //
+        $bbmss = bbms::findorfail($bbms);
+        $bbmss->delete();
+        return redirect('/databbm');
     }
 }

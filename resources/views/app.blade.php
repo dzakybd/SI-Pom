@@ -19,6 +19,8 @@
   <script src="plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   <![endif]-->
 </head>
+<script src="/plugins/jquery/jquery-3.1.0.min.js"></script>
+<script src="/plugins/jquery-cookies/jquery.cookies.js"></script> <!-- Jquery Cookies, for theme -->
 <!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
 <!-- LAYOUT: Apply "sidebar-collapsed" class to body element to have collapsed sidebar -->
 <!-- LAYOUT: Apply "sidebar-top" class to body element to have sidebar on top of the page -->
@@ -640,7 +642,6 @@
   </div>
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
-<script src="/plugins/jquery/jquery-3.1.0.min.js"></script>
 <script src="/plugins/jquery/jquery-migrate-3.0.0.min.js"></script>
 <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/plugins/gsap/main-gsap.min.js"></script> <!-- HTML Animations -->
@@ -654,7 +655,6 @@
 <script src="/plugins/switchery/switchery.min.js"></script> <!-- IOS Switch -->
 <script src="/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
 <script src="/plugins/retina/retina.min.js"></script>  <!-- Retina Display -->
-<script src="/plugins/jquery-cookies/jquery.cookies.js"></script> <!-- Jquery Cookies, for theme -->
 <script src="/plugins/bootstrap/js/jasny-bootstrap.min.js"></script> <!-- File Upload and Input Masks -->
 <script src="/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
 <script src="/plugins/bootstrap-tags-input/bootstrap-tagsinput.min.js"></script> <!-- Select Inputs -->
