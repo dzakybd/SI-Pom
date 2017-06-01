@@ -14,7 +14,11 @@ class KeteranganbbmsController extends Controller
      */
     public function index()
     {
-        //
+        $rekap = \DB::table('transaksibbms')->leftJoin('bbms', 'bbms.idbbms', '=', 'transaksibbms.bbmt')
+                                            ->leftJoin('keteranganbbms', 'keteranganbbms.idketerangan', '=', 'transaksibbms.keterangant')
+                                            ->leftJoin('instansibbms', 'instansibbms.idinstansi', '=', 'transaksibbms.instansit')
+                                            ->get();
+        return view ('bbm.rekap',compact('rekap'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\instansibbms;
 use App\keteranganbbms;
+use App\transaksibbms;
 use App\bbms;
 use Illuminate\Http\Request;
 
@@ -55,7 +56,10 @@ class InstansibbmsController extends Controller
         $insta = instansibbms::all();
         $ketinput = keteranganbbms::all()->where('instansi', $instansibbms)->pluck('ket', 'idketerangan');
         $bbminput = bbms::all()->pluck('namaBBM', 'idbbms');
-        return view ('bbm.inputshow',compact('insta', 'ketinput', 'bbminput'));
+        $transinput = \DB::table('transaksibbms')->leftJoin('bbms', 'bbms.idbbms', '=', 'transaksibbms.bbmt')
+                                                ->leftJoin('keteranganbbms', 'keteranganbbms.idketerangan', '=', 'transaksibbms.keterangant')
+                                                ->get()->where('instansit', $instansibbms);
+        return view ('bbm.inputshow',compact('insta', 'ketinput', 'bbminput', 'instansibbms', 'transinput'));
     }
 
     /**

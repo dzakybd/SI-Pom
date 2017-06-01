@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('bbm.input');
+    return view('home');
 });
 
 Route::resource('databbm','BbmsController');
@@ -25,6 +25,9 @@ Route::resource('input','InstansibbmsController');
 
 Route::get('hapusdatabbm/{id}', 'BbmsController@hapusdatabbm');
 
+Route::get('hapusdatatransaksi/{id}', 'TransaksibbmsController@hapusdatatransaksi');
+
+Route::resource('rekap','KeteranganbbmsController');
 
 // Route::get('/inputbbmedit', function () {
 //     return view('bbm.inputedit');
@@ -33,6 +36,7 @@ Route::get('hapusdatabbm/{id}', 'BbmsController@hapusdatabbm');
 // Route::get('/rekapbbmedit', function () {
 //     return view('bbm.rekapedit');
 // });
+
 // Route::get('/databbm', function () {
 //     return view('bbm.data');
 // });

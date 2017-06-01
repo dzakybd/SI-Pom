@@ -70,9 +70,21 @@
 				</tr>
 			</thead>
 			<tbody class="body-rekap">
-				<tr>
-					<td colspan="7">Belum Ada Transaksi</td>
-				</tr>
+				@if($rekap->count())
+				<?php $i=0 ?>
+					@foreach($rekap as $m)
+					<?php $i++; ?>
+					<tr>
+						<td>{{$i}}</td>
+						<td>{{$m->tanggal}}</td>
+						<td>{{$m->namaInstansi}}</td>
+						<td>{{$m->ket}}</td>
+						<td>{{$m->namaBBM}}</td>
+						<td>{{$m->tipe}}</td>
+						<td>{{$m->jumlah}}</td>
+					</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>

@@ -87,12 +87,23 @@
 		</thead>
 		<tbody class="input-body">
  		  <tr>
-
+ 		  	@if($transinput->count())
+ 		  	@foreach($transinput as $m)
+ 		  		<td>{{$m->tanggal}}</td>
+ 		  		<td>{{$m->ket}}</td>
+ 		  		<td>{{$m->namaBBM}}</td>
+ 		  		<td>{{$m->tipe}}</td>
+ 		  		<td>{{$m->jumlah}}</td>
+ 		  		<td class="text-center">
+					<a href="/hapusdatatransaksi/{{$m->idtransaksi}}"><i class="fa fa-times"></i></a>
+				</td>
+ 		  	@endforeach
+ 		  	@endif
 		  </tr>
-		        {!! Form::open(array('url' => '/input')) !!}
+		        {!! Form::open(array('url' => '/transaksibbm')) !!}
 		        <tr>
 		        <td>
-					{!! Form::text('tanggal',null, array('class' => 'form-control datepick','placeholder'=>'Tanggal')) !!}	
+					{!! Form::date('tanggal',null, array('class' => 'form-control datepick','placeholder'=>'Tanggal')) !!}	
 		        </td>
 		        <td>
 					{!! Form::select('keterangant', $ketinput ,null , array('class' => 'form-control whichKeterangan')) !!}	
@@ -101,18 +112,23 @@
 					{!! Form::select('bbmt', $bbminput ,null , array('class' => 'form-control bbmPick')) !!}	
 		        </td>
 				<td>
-					{!! Form::select('tipe', ['Keluar', 'Masuk'],null ,array('class' => 'form-control choice')) !!}
+					{!! Form::select('tipe', ['Keluar'=>'Keluar', 'Masuk'=>'Masuk'],null ,array('class' => 'form-control choice')) !!}
 				</td>
 				<td>
 					{!! Form::text('jumlah',null, array('class' => 'form-control jumlah','placeholder'=>'Jumlah')) !!}
-					<input type="text" name="jumlah" id="jumlah" class="form-control jumlah"> 
 				</td>
-				<td class="text-center">
-					<a href="#" onclick=""><i class="fa fa-times"></i></a>
-				</td>
+				{!! Form::hidden('instansit',$instansibbms) !!}
 			</tr>
 		</tbody>
 	</table>
-
-	<a href="#" class="btn btn-primary text-center save-btn" style="width: 100%; margin-bottom: 10px;" onclick="">Save Transaksi BBM</a>
+	{!! Form::button('Save Transaksi BBM', array('style' => 'width: 100%; margin-bottom: 10px', 'type' => 'submit', 'class' => 'btn btn-primary text-center save-btn'))!!}
+	{!! Form::close()!!}
+	
+	<script>
+		function link() {	
+		 var selectedInstansi = document.getElementById('instansiPick');
+		 var selected = selectedInstansi.options[selectedInstansi.selectedIndex].value;
+		 document.getElementById("editlink").href = "/input/"+selected;
+		}
+	</script>
 @endsection

@@ -83,8 +83,8 @@
             </div>
           </div>
           <ul class="nav nav-sidebar">
-            <li class="tm nav-parent"><a href="my-link.html"><i class="icon-home"></i><span>Home</span></a></li>
-            <li class="tm nav-parent active">
+            <li class="tm nav-parent active"><a href="my-link.html"><i class="icon-home"></i><span>Home</span></a></li>
+            <li class="tm nav-parent">
               <a href=""><i class="fa fa-car"></i><span>BBM</span> <span class="fa arrow active"></span></a>
               <ul class="children collapse">
                 <li class=""><a href="/databbm">Data BBM</a></li>
@@ -142,11 +142,11 @@
               <section class="content-header">
 
                 <ol class="breadcrumb" style="margin:0px;">
-                  <li><a href="#"><i class="fa fa-automobile"></i>@yield('smallcontent-header')</a></li>
+                  <li><a href="#"><i class="icon-home"></i>@yield('smallcontent-header')</a></li>
                 </ol>
                 <h1 style="margin-top:.3em;">
                   <b id="title"><strong>@yield('content-header')</strong></b>
-                  <small class="sm-header">BBM</small>
+                  <small class="sm-header"></small>
                 </h1>
               </section>
 

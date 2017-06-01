@@ -31,6 +31,14 @@ class TransaksibbmsController extends Controller
     {
     }
 
+    public function hapusdatatransaksi($id)
+    {
+        $temp = transaksibbms::where('idtransaksi', $id)->pluck('instansit');
+        $transaksibbms = new transaksibbms();
+        $transaksibbms->destroy($id);
+        return redirect('/input/'.$temp[0]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -39,6 +47,8 @@ class TransaksibbmsController extends Controller
      */
     public function store(Request $request)
     {
+        transaksibbms::create($request->all());
+        return redirect('/input/'.$request['instansit']);
     }
 
     /**
