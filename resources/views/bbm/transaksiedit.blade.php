@@ -174,13 +174,95 @@
 		</div>
 	</div>
 
-	<div class="row kosong instansi-kosong">
-	    <h2>Detail Keterangan akan terlihat di sini</h2>
-	</div>
+	<div class="row keterangan-action">
+    	<style type="text/css">
+			.activewell{
+				background-color: #337ab7;
+			}
+
+			.activewell h2 a, .activewell p{
+				color: white;
+			}
+		</style>
+
+		<div class="col-xs-3">
+			<input type="hidden" id="jumlahhidden" value="Rp. 0,-">
+			<button id="myBtnKet" class="btn btn-primary" style="width: 100%;margin-bottom: 1em;">Tambah Keterangan</button>
+			<div class="search-keterangan">
+
+				<div class="well well-pick activewell" style="padding: 0.6em !important; margin-bottom:5px !important;">
+					<h2 class="keterangan-h2" style="color:white;">Report Polisi</h2>
+				</div>
+
+				<div class="well" style="padding: 0.6em !important; margin-bottom:5px !important;">
+					<h2 class="keterangan-h2">Brimob</h2>
+					<p style="font-size:11px;">Ada 2 Transaksi</p>
+				</div>
+				<div class="well" style="padding: 0.6em !important; margin-bottom:5px !important;">
+					<h2 class="keterangan-h2">Satpol PP</h2>
+					<p style="font-size:11px;">Ada 5 Transaksi</p>
+				</div>
 
 
-	<div class="row keterangan-action hidden">
-		
+			</div>
+		</div>
+
+		<div class="col-xs-9">
+			<div class="detail-keterangan">
+				<h2 class="text-center">Report BBM</h2>
+					<div class="col-xs-12">
+						<br>
+					</div>
+					<div class="col-xs-4">
+						<div class="well text-center">
+							<h2><b>Pertalite</b></h2>
+							<h3>208.700 Liter</h3>
+						</div>
+					</div>
+			</div>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="detail">
+					<table class="table table-bordered">
+						<thead>
+							<tr><th class="text-center" style="width:">
+								Tanggal
+							</th>
+							<th class="text-center" style="width:">
+								Jenis BBM
+							</th>
+							<th class="text-center" style="width:">
+								Keterangan
+							</th>
+							<th class="text-center" style="width:">
+								Jumlah
+							</th>
+						</tr></thead>
+						<tbody class="filter-here">
+							<tr>
+								<td>1 Mei 2017</td>
+								<td>Pertalite</td>
+								<td>Brimob</td>
+								<td>
+									- 100.000
+							</td>
+						</tr>
+							<tr>
+								<td>1 Mei 2017</td>
+								<td>Pertalite</td>
+								<td>Satpol PP</td>
+								<td>
+									+ 10.000
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">Jumlah</td>
+							<td>-90.000</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div id="myModal" class="modal">
@@ -195,6 +277,27 @@
 			  <form action="/action_page.php">
 			    <label for="fname">Nama Instansi</label>
 			    <input type="text" id="fname" name="firstname" placeholder="Isi Nama Instansi..">
+			  </form>
+		    </div>
+		    <div class="modal-footer">
+				<input type="submit" value="Save">
+		    </div>
+	  </div>
+
+	</div>
+
+	<div id="myModalKet" class="modal">
+
+  <!-- Modal content -->
+	  <div class="modal-content">
+		    <div class="modal-header">
+		      <span class="close">&times;</span>
+		      <h2>TAMBAH Keterangan :</h2>
+		    </div>
+		    <div class="modal-body">
+			  <form action="/action_page.php">
+			    <label for="fname">Keterangan</label>
+			    <input type="text" id="fname" name="firstname" placeholder="Isi Keterangan..">
 			  </form>
 		    </div>
 		    <div class="modal-footer">
@@ -236,6 +339,31 @@
 	window.onclick = function(event) {
 	    if (event.target == modal) {
 	        modal.style.display = "none";
+	    }
+	}
+
+	var modalket = document.getElementById('myModalKet');
+
+	// Get the button that opens the modal
+	var btnket = document.getElementById("myBtnKet");
+
+	// Get the <span> element that closes the modal
+	var spanket = document.getElementsByClassName("closeket")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclickket = function() {
+	    modalket.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclickket = function() {
+	    modalket.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclickket = function(event) {
+	    if (event.target == modalket) {
+	        modalket.style.display = "none";
 	    }
 	}
 </script>

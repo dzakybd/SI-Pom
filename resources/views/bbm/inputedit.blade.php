@@ -82,17 +82,35 @@
 			</tr>
 		</thead>
 		<tbody class="input-body">
-			<tr class="empty-input">
-				<td colspan="5" class="text-center"> Pilih Instansi Terlebih Dahulu </td>
+	      <tr>
+				<td><input class="form-control datepick" type="text" name="datepick"></td>
+				<td>
+				<select class="form-control whichKeterangan" id="whichKeterangan">
+						<option value="">Brimob</option>
+						<option value="">Satpol PP</option>
+				</select>
+				</td>
+				<td>
+					<select class="form-control bbmPick" id="bbmPick">
+							<option value="">Pertalite</option>
+					</select>
+				</td>
+				<td>
+					<select class="form-control choice" id="choice">
+						<option value="keluar">Keluar</option>
+						<option value="masuk">Masuk</option>
+					</select>
+				</td>
+				<td>
+					<input type="text" name="jumlah" id="jumlah" class="form-control jumlah"> 
+				</td>
+				<td class="text-center">
+					<a href="#" onclick=""><i class="fa fa-times"></i></a>
+				</td>
 			</tr>
 		</tbody>
 	</table>
-
 	<input type="hidden" name="crumb" id="" value="">
 
-	<a href="#" class="btn btn-primary text-center save-btn hidden" style="width: 100%; margin-bottom: 10px;" onclick="saveTransaksi()">Save Transaksi BBM</a>
-
-	<div class="add-table text-center hidden">
-		<h2><a href="#" class="plus-button" onclick="tambahInput()"><i class="fa fa-plus"></i></a></h2>
-	</div>
+	<a href="#" class="btn btn-primary text-center save-btn" style="width: 100%; margin-bottom: 10px;" onclick="">Save Transaksi BBM</a>
 @endsection

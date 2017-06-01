@@ -18,6 +18,14 @@ Route::get('/', function () {
 Route::resource('databbm','BbmsController');
 Route::get('hapusdatabbm/{id}', 'BbmsController@hapusdatabbm');
 
+
+Route::get('/inputbbmedit', function () {
+    return view('bbm.inputedit');
+});
+
+Route::get('/rekapbbmedit', function () {
+    return view('bbm.rekapedit');
+});
 // Route::get('/databbm', function () {
 //     return view('bbm.data');
 // });
