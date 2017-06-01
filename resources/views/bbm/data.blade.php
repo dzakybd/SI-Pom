@@ -1,14 +1,14 @@
 @extends('app')
 @section('title')
-	Data BBM
+    Data BBM
 @endsection
 
 @section('smallcontent-header')
-	BBM / Data BBM
+    BBM / Data BBM
 @endsection
 
 @section('content-header')
-	Data
+    Data
 @endsection
 
 @section('content')
@@ -116,66 +116,98 @@ div.ketceh{
 }
 </style>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="/public/assets/css/stylems.css">
-	<link rel="stylesheet" type="text/css" href="/public/assets/css/poi.css">
-	<link rel="stylesheet" type="text/css" href="/public/assets/css/select2.css">
-	<div class="data-message"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/stylems.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/poi.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/select2.css">
+    <div class="data-message"> 
 
-	</div>
-	<div class="row">
-	  <input type="hidden" name="crumb" value="" id="crumb"/>
-	  <div class="col-xs-12" style="margin-bottom:10px;">
-	    <button id="myBtn" class="btn btn-default add-bbm"><i class="fa fa-plus"></i> Tambah BBM</button>
-	  </div>
-	  <div class="bbm-here">
-	  	<div class="col-xs-3">
-			<div class="well">
-				<h2>[001] <b>Pertalite</b></h2>
-				<p>Harga : Rp 10.000.000,-</p>
-				<button class="myBtnS btn btn-primary" onclick="">Edit</button>
-				<a href="#" class="btn btn-default" onclick="">Hapus</a>
-			</div>
-		</div>
-	  </div>
-	  
-	</div>
+    </div>
+    <div class="row">
+      <input type="hidden" name="crumb" value="" id="crumb"/>
+      <div class="col-xs-12" style="margin-bottom:10px;">
+        <button id="myBtn" class="myBtnS btn btn-default add-bbm"><i class="fa fa-plus"></i> Tambah BBM</button>
+      </div>
+      @if($bbms->count())
+        <?php $i = 0 ?>
+        @foreach($bbms as $m)
+        <?php $i++ ?>
+          <div class="bbm-here">
+            <div class="col-xs-3">
+                <div class="well">
+                    <h2>{{$i}} <b>{{$m->namaBBM}}</b></h2>
+                    <p>Harga : Rp {{$m->harga}},-</p>
+                    <button id="myBtnEdit" value="<?php echo $m->idbbms;?>" class="myBtnSEdit btn btn-primary">Edit</button>
+                    <a href="/hapusdatabbm/{{$m->idbbms}}"><button type='submit' class="btn btn-default">Hapus</button></a>
+                </div>
+            </div>
+          </div>
+        @endforeach
+      @endif
+      
+    </div>
+
+<div id="myModalEdit" class="modal">
+
+  <!-- Modal content -->
+    <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Edit BBM :</h2>
+    </div>
+    <div class="modal-body">
+      {!! Form::model($bbms[0],['method'=>'PATCH','action'=>['BbmsController@update',$bbms[0]->idbbms]]) !!}
+        {!! Form::label('namaBBM', 'Nama BBM') !!}
+        {!! Form::text('namaBBM',null, array('placeholder'=>'Nama BBM')) !!}
+        {!! Form::label('harga', 'Harga') !!}
+        {!! Form::text('harga',null, array('placeholder'=>'Harga')) !!}
+        {!! Form::label('kode', 'Kode') !!}
+        {!! Form::text('kode',null, array('placeholder'=>'Kode')) !!}
+    </div>
+    <div class="modal-footer">
+    {!! Form::button('Update', array('type' => 'submit'))!!}
+    {!! Form::close()!!}
+    </div>
+  </div>
+
+</div>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+    <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
       <h2>TAMBAH BBM :</h2>
     </div>
     <div class="modal-body">
-	  <form action="/action_page.php">
-	    <label for="fname">Nama BBM</label>
-	    <input type="text" id="fname" name="firstname" placeholder="Isi Nama BBM..">
-
-	    <label for="lname">Harga BBM</label>
-	    <input type="text" id="lname" name="lastname" placeholder="Harga BBM..">
-
-	    <label for="lname">Kode BBM</label>
-	    <input type="text" id="lname" name="lastname" placeholder="Kode BBM..">
-	  
-	  </form>
+      {!! Form::open(array('url' => '/databbm')) !!}
+        {!! Form::label('namaBBM', 'Nama BBM') !!}
+        {!! Form::text('namaBBM',null, array('placeholder'=>'Nama BBM')) !!}
+        {!! Form::label('harga', 'Harga') !!}
+        {!! Form::text('harga',null, array('placeholder'=>'Harga')) !!}
+        {!! Form::label('kode', 'Kode') !!}
+        {!! Form::text('kode',null, array('placeholder'=>'Kode')) !!}
     </div>
     <div class="modal-footer">
-		<input type="submit" value="Submit">
+    {!! Form::button(' Submit', array('type' => 'submit'))!!}
+    {!! Form::close()!!}
     </div>
   </div>
 
 </div>
+
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
+var modaledit = document.getElementById('myModalEdit');
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 var $lba = document.getElementsByClassName("myBtnS");
+var btnedit = document.getElementById("myBtnEdit");
+var $lbaedit = document.getElementsByClassName("myBtnSEdit");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
@@ -183,25 +215,36 @@ var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
     modal.style.display = "block";
 }
+btnedit.onclick = function() {
+    modaledit.style.display = "block";
+}
 // You nice function:
 function myPopup() {
     modal.style.display = "block";
+}
+function myPopupEdit() {
+    modaledit.style.display = "block";
 }
 
 // Assign a click event handler to every element:
 for(var i=0; i<$lba.length; i++) {
     $lba[i].onclick = myPopup;
 }
+for(var i=0; i<$lbaedit.length; i++) {
+    $lbaedit[i].onclick = myPopupEdit;
+}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
+    modaledit.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target == modal || event.target == modaledit) {
         modal.style.display = "none";
+        modaledit.style.display = "none";
     }
 }
 </script>
