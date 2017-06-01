@@ -14,7 +14,7 @@ class CreateInstansibbmsTable extends Migration
     public function up()
     {
         Schema::create('instansibbms', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('idinstansi');
             $table->timestamps();
             $table->string('namaInstansi',100);
             // $table->foreign('bbm')

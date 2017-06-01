@@ -15,24 +15,24 @@ class ForeignKey extends Migration
     {
         Schema::table('keteranganbbms', function (Blueprint $table) {
             $table->foreign('instansi')
-                  ->references('id')
+                  ->references('idinstansi')
                   ->on('instansibbms')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
         });
         Schema::table('transaksibbms', function (Blueprint $table) {
         $table->foreign('instansit')
-                  ->references('id')
+                  ->references('idinstansi')
                   ->on('instansibbms')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
             $table->foreign('keterangant')
-                  ->references('id')
+                  ->references('idketerangan')
                   ->on('keteranganbbms')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
             $table->foreign('bbmt')
-                  ->references('id')
+                  ->references('idbbms')
                   ->on('bbms')
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
