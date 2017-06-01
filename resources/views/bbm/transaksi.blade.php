@@ -196,7 +196,7 @@
 		      <h2>TAMBAH Instansi :</h2>
 		    </div>
 		    <div class="modal-body">
-			  	{!! Form::open(array('url' => '/instansi')) !!}
+			  	{!! Form::open(array('url' => '/input')) !!}
 			        {!! Form::label('namaInstansi', 'Nama Instansi') !!}
 			        {!! Form::text('namaInstansi',null, array('placeholder'=>'Nama Instansi')) !!}
 		    </div>

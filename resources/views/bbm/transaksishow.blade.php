@@ -215,12 +215,6 @@
 					<div class="col-xs-12">
 						<br>
 					</div>
-					<div class="col-xs-4">
-						<div class="well text-center">
-							<h2><b>Pertalite</b></h2>
-							<h3>208.700 Liter</h3>
-						</div>
-					</div>
 			</div>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="detail">
@@ -276,7 +270,7 @@
 		      <h2>TAMBAH Instansi :</h2>
 		    </div>
 		    <div class="modal-body">
-			  	{!! Form::open(array('url' => '/instansi')) !!}
+			  	{!! Form::open(array('url' => '/input')) !!}
 			        {!! Form::label('namaInstansi', 'Nama Instansi') !!}
 			        {!! Form::text('namaInstansi',null, array('placeholder'=>'Nama Instansi')) !!}
 		    </div>
