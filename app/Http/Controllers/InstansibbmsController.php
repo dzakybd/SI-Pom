@@ -59,7 +59,8 @@ class InstansibbmsController extends Controller
         $transinput = \DB::table('transaksibbms')->leftJoin('bbms', 'bbms.idbbms', '=', 'transaksibbms.bbmt')
                                                 ->leftJoin('keteranganbbms', 'keteranganbbms.idketerangan', '=', 'transaksibbms.keterangant')
                                                 ->get()->where('instansit', $instansibbms);
-        return view ('bbm.inputshow',compact('insta', 'ketinput', 'bbminput', 'instansibbms', 'transinput'));
+        $namainsta = instansibbms::all()->where('idinstansi',$instansibbms)->pluck('namaInstansi');
+        return view ('bbm.inputshow',compact('insta', 'ketinput', 'bbminput', 'instansibbms', 'transinput', 'namainsta'));
     }
 
     /**

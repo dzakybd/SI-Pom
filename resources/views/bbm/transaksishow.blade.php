@@ -194,7 +194,7 @@
 			<button id="myBtnEdit" class="myBtnSEdit btn-primary" style="width: 100%;margin-bottom: 1em;">Tambah Keterangan</button>
 			<div class="search-keterangan">
 				<div class="well well-pick activewell" style="padding: 0.6em !important; margin-bottom:5px !important;">
-					<h2 class="keterangan-h2" style="color:white;">{{$namainsta->namaInstansi}}</h2>
+					<h2 class="keterangan" style="color:white;">{{$namainsta->namaInstansi}}</h2>
 				</div>
 				@if($ketinsta->count())
 			        @foreach($ketinsta as $m)
@@ -234,25 +234,23 @@
 							</th>
 						</tr></thead>
 						<tbody class="filter-here">
+						@if($report->count())
+				 		  	@foreach($report as $m)
 							<tr>
-								<td>1 Mei 2017</td>
-								<td>Pertalite</td>
-								<td>Brimob</td>
-								<td>
-									- 100.000
-							</td>
-						</tr>
-							<tr>
-								<td>1 Mei 2017</td>
-								<td>Pertalite</td>
-								<td>Satpol PP</td>
-								<td>
-									+ 10.000
-							</td>
-						</tr>
+				 		  		<td>{{$m->tanggal}}</td>
+				 		  		<td>{{$m->namaBBM}}</td>
+				 		  		<td>{{$m->ket}}</td>
+				 		  		@if($m->tipe == 'Masuk')
+				 		  			<td>+{{$m->jumlah}}</td>
+				 		  		@elseif($m->tipe == 'Keluar')
+				 		  			<td>-{{$m->jumlah}}</td>
+				 		  		@endif
+						  	</tr>
+				 		  	@endforeach
+				 		@endif
 						<tr>
 							<td colspan="3">Jumlah</td>
-							<td>-90.000</td>
+							<td>{{$jumlah}}</td>
 						</tr>
 						</tbody>
 					</table>

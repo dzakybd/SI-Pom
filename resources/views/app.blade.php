@@ -85,7 +85,7 @@
             </div>
           </div>
           <ul class="nav nav-sidebar">
-            <li class="tm nav-parent"><a href="my-link.html"><i class="icon-home"></i><span>Home</span></a></li>
+            <li><a href="/home"><i class="icon-home"></i><span>Home</span></a></li>
             <li class="tm nav-parent active">
               <a href=""><i class="fa fa-car"></i><span>BBM</span> <span class="fa arrow active"></span></a>
               <ul class="children collapse">

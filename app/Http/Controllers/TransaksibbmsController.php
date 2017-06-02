@@ -62,7 +62,13 @@ class TransaksibbmsController extends Controller
         $insta = instansibbms::all();
         $ketinsta = keteranganbbms::all()->where('instansi', '=' , $transaksibbms);
         $namainsta = instansibbms::where('idinstansi', '=', $transaksibbms)->first();
-        return view ('bbm.transaksishow',compact('insta', 'namainsta', 'ketinsta'));
+        $report = \DB::table('transaksibbms')->leftJoin('bbms', 'bbms.idbbms', '=', 'transaksibbms.bbmt')
+                                                ->leftJoin('keteranganbbms', 'keteranganbbms.idketerangan', '=', 'transaksibbms.keterangant')
+                                                ->get()->where('instansit', $transaksibbms);
+        $jumlahpos = \DB::table('transaksibbms')->where('tipe', '=', 'Masuk', 'and', 'instansit', '=', $transaksibbms)->sum('jumlah');
+        $jumlahneg = \DB::table('transaksibbms')->where('tipe', '=', 'Keluar', 'and', 'instansit', '=', $transaksibbms)->sum('jumlah');
+        $jumlah = $jumlahpos - $jumlahneg;
+        return view ('bbm.transaksishow',compact('insta', 'namainsta', 'ketinsta', 'report', 'jumlah'));
     }
 
     /**

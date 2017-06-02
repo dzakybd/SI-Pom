@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::resource('databbm','BbmsController');
 
 Route::resource('transaksibbm','TransaksibbmsController');

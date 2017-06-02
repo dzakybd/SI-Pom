@@ -8,7 +8,7 @@
 @endsection
 
 @section('content-header')
-	Input
+	Input {{$namainsta->first()}}
 @endsection
 
 @section('content')
@@ -86,9 +86,9 @@
 			</tr>
 		</thead>
 		<tbody class="input-body">
- 		  <tr>
  		  	@if($transinput->count())
  		  	@foreach($transinput as $m)
+			<tr>
  		  		<td>{{$m->tanggal}}</td>
  		  		<td>{{$m->ket}}</td>
  		  		<td>{{$m->namaBBM}}</td>
@@ -96,10 +96,10 @@
  		  		<td>{{$m->jumlah}}</td>
  		  		<td class="text-center">
 					<a href="/hapusdatatransaksi/{{$m->idtransaksi}}"><i class="fa fa-times"></i></a>
-				</td>
+				</td>				
+		  	</tr>
  		  	@endforeach
  		  	@endif
-		  </tr>
 		        {!! Form::open(array('url' => '/transaksibbm')) !!}
 		        <tr>
 		        <td>
